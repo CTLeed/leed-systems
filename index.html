@@ -4,30 +4,175 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leed Systems</title>
-  <meta name="description" content="Leed Systems provides software tools and digital products for developers, focused on automation and modern web application scaffolding." />
+
+  <meta name="description"
+        content="Leed Systems builds developer tools, automation utilities, and modern web application scaffolding." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Leed Systems" />
+  <meta property="og:description"
+        content="Developer tools and digital products focused on automation and clean project scaffolding." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicons / PWA (relative paths for GitHub Pages subpath) -->
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./styles.css" />
 </head>
-<body style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 720px; margin: 4rem auto; padding: 0 1rem; line-height: 1.6;">
 
-  <h1>Leed Systems</h1>
+<body>
+  <div class="wrap">
 
-  <p>
-    Leed Systems provides software tools, developer utilities, and digital products
-    focused on automation and modern web application scaffolding.
-  </p>
+    <header class="header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1 class="brand-title">Leed Systems</h1>
+          <p class="brand-sub">Automation • Developer Tools • Digital Products</p>
+        </div>
+      </div>
 
-  <p>
-    Products include command-line tools, downloadable software packages,
-    and related developer tooling.
-  </p>
+      <nav class="nav">
+        <a class="pill" href="#products">Products</a>
+        <a class="pill" href="#newsletter">Updates</a>
+        <a class="pill" href="#contact">Contact</a>
+        <a class="pill"
+           href="https://leed-systems.lemonsqueezy.com/"
+           target="_blank"
+           rel="noreferrer">
+          Shop ↗
+        </a>
+      </nav>
+    </header>
 
-  <p>
-    Link to Lemon Squeezy shop:
-    <a href="https://leed-systems.lemonsqueezy.com/">
-  <p>
+    <main class="hero">
+      <div class="hero-inner">
+        <div class="kicker">
+          Built for developers who value speed and clarity
+        </div>
 
-  <p>
-    Contact: <a href="mailto:support@leedsystems.dev">support@leedsystems.dev</a>
-  </p>
+        <h2 class="headline">
+          Modern scaffolding and automation tools that keep projects moving.
+        </h2>
 
+        <p class="lead">
+          Leed Systems creates practical CLI utilities, templates, and digital products
+          designed to reduce setup friction and help teams ship faster.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary"
+             href="https://leed-systems.lemonsqueezy.com/"
+             target="_blank"
+             rel="noreferrer">
+            Visit the Shop
+          </a>
+
+          <a class="btn" href="mailto:support@leedsystems.dev">
+            Email Support
+          </a>
+        </div>
+
+        <section id="products" class="grid" aria-label="Product highlights">
+          <div class="card">
+            <h3>CLI Utilities</h3>
+            <p>Developer-focused tools for automating setup and daily workflows.</p>
+          </div>
+
+          <div class="card">
+            <h3>Project Templates</h3>
+            <p>Opinionated starters for modern web stacks with clean structure.</p>
+          </div>
+
+          <div class="card">
+            <h3>Downloadable Tools</h3>
+            <p>Focused utilities you can add without committing to a large platform.</p>
+          </div>
+        </section>
+
+        <section id="newsletter" class="newsletter">
+          <div class="newsletter-head">
+            <h3>Get updates</h3>
+            <p>Occasional emails when new tools or templates are released.</p>
+          </div>
+
+          <!-- Mailjet signup via Cloudflare Worker -->
+          <form id="signupForm"
+                class="form"
+                method="POST"
+                action="https://leed-systems-signup.ctleed.workers.dev">
+
+            <label class="sr-only" for="email">Email address</label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@domain.com"
+              autocomplete="email"
+              required
+            />
+
+            <button class="btn btn-primary" type="submit">
+              Notify me
+            </button>
+          </form>
+
+          <p id="formMsg" class="form-msg" role="status" aria-live="polite"></p>
+
+          <p class="fineprint">
+            No spam. Unsubscribe anytime.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer id="contact" class="footer">
+      <div class="fine">
+        Contact:
+        <a href="mailto:support@leedsystems.dev">support@leedsystems.dev</a>
+      </div>
+      <div class="fine">
+        © <span id="year"></span> Leed Systems
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    const form = document.getElementById("signupForm");
+    const msg = document.getElementById("formMsg");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      msg.textContent = "Submitting…";
+
+      const email = new FormData(form).get("email");
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data?.error || "Unable to subscribe.");
+
+        msg.textContent = "You’re in! Watch your inbox.";
+        form.reset();
+      } catch (err) {
+        msg.textContent = err.message || "Something went wrong.";
+      }
+    });
+  </script>
 </body>
 </html>
