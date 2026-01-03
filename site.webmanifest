@@ -1,0 +1,8 @@
+{
+  "name": "Leed Systems",
+  "short_name": "Leed Systems",
+  "start_url": "/leed-systems/",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220"
+}
