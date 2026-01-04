@@ -420,6 +420,7 @@
 
 	.btn-primary:hover {
 		box-shadow: 0 4px 20px rgba(96, 165, 250, 0.4);
+		color: rgba(132, 170, 246, 0.9);
 	}
 
 	.btn:disabled {
