@@ -77,7 +77,7 @@
 			</div>
 
 			<nav class="nav">
-				<a class="pill" href="#products">Products</a>
+				<a class="pill" href="#products">Tools</a>
 				<a class="pill" href="#newsletter">Updates</a>
 				<a class="pill" href="#contact">Contact</a>
 				<a
@@ -86,7 +86,7 @@
 					target="_blank"
 					rel="noreferrer"
 				>
-					Shop ↗
+					Get Tools ↗
 				</a>
 			</nav>
 		</header>
@@ -100,8 +100,7 @@
 				</h2>
 
 				<p class="lead">
-					Leed Systems creates practical CLI utilities, templates, and digital products designed to
-					reduce setup friction and help teams ship faster.
+					Our first release, leed-stack, is an opinionated CLI for generating clean, production-ready full-stack projects with sane defaults
 				</p>
 
 				<div class="cta-row">
@@ -111,29 +110,43 @@
 						target="_blank"
 						rel="noreferrer"
 					>
-						Visit the Shop
+						Get leed-stack
 					</a>
 
 					<a class="btn" href="mailto:ctleed@gmail.com"> Email Support </a>
 				</div>
 
+				<section>
+					<p class="growth">
+						More tools coming &#8212 Leed Systems ships focused developer tools designed to solve real world problems.
+					</p>
+				</section>
+
+
 				<section id="products" class="grid" aria-label="Product highlights">
 					<div class="card">
 						<div class="card-icon">🛠️</div>
-						<h3>CLI Utilities</h3>
-						<p>Developer-focused tools for automating setup and daily workflows.</p>
+						<h3>CLI Tools</h3>
+						<p>Developer-focused tools for automating setup and daily workflows -- starting with leed-stack.</p>
 					</div>
 
 					<div class="card">
 						<div class="card-icon">📦</div>
-						<h3>Project Templates</h3>
+						<h3>Starters & Templates</h3>
 						<p>Opinionated starters for modern web stacks with clean structure.</p>
 					</div>
 
 					<div class="card">
 						<div class="card-icon">⚡</div>
-						<h3>Downloadable Tools</h3>
+						<h3>Standalone Utilities</h3>
 						<p>Focused utilities you can add without committing to a large platform.</p>
+					</div>
+				</section>
+
+				<section>
+					<div class="how-it-works">
+						<h2>How it works</h2>
+						<p>Install &#8594 Choose a stack &#8594 Generate project with clean structure and sensible defaults.</p>
 					</div>
 				</section>
 
@@ -359,7 +372,7 @@
 	}
 
 	.lead {
-		max-width: 70ch;
+		max-width: 80ch;
 		color: rgba(229, 231, 235, 0.9);
 		font-size: 16px;
 		line-height: 1.6;
@@ -368,6 +381,39 @@
 	@media (max-width: 640px) {
 		.lead {
 			font-size: 15px;
+		}
+	}
+
+	.growth {
+		margin: 18px 0;
+		color: var(--muted);
+		font-size: 15px;
+		line-height: 1.6;
+	}
+	@media (max-width: 640px) {
+		.growth {
+			font-size: 14px;
+		}
+	}
+
+	.how-it-works {
+		margin-top: 24px;
+		text-align: center;
+	}
+	.how-it-works h2 {
+		margin: 0 0 8px;
+	}
+	.how-it-works p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 15px;
+	}
+	@media (max-width: 640px) {
+		.how-it-works {
+			max-width: fit-content;
+		}
+		.how-it-works p {
+			font-size: 14px;
 		}
 	}
 
