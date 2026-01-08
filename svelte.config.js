@@ -10,11 +10,9 @@ const config = {
 			pages: 'build',
 			assets: 'build',
 			fallback: undefined,
-			precompress: false
+			precompress: false,
+			strict: true
 		}),
-        prerender: {
-            default: true,
-        },
 		paths: {
 			base: process.env.NODE_ENV === 'production' ? '/leed-systems' : ''
 		}
